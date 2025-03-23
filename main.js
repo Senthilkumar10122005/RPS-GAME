@@ -151,6 +151,21 @@ function displayresult(){
             matchresult.innerText="RESULT🤔";
         }
         
-
+ 
 }
-   
+const autoplayButton = document.getElementById("autoplay");
+let autoplayInterval;
+
+autoplayButton.addEventListener("click", function () {
+    if (autoplayButton.textContent === "Start Auto Play") {
+        autoplayButton.textContent = "Stop Auto Play";
+        autoplayInterval = setInterval(() => {
+            const choices = ["rock", "paper", "scissors"];
+            const randomChoice = choices[Math.floor(Math.random() * choices.length)];
+            document.getElementById(randomChoice).click();
+        }, 3000);
+    } else {
+        autoplayButton.textContent = "Start Auto Play";
+        clearInterval(autoplayInterval);
+    }
+});
